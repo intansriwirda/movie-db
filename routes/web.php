@@ -9,20 +9,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
+// Pilih salah satu, misalnya uncomment yang di HEAD:
 Route::get('/movie', function () {
     return view('movie');
 });
 
-Route::get('/home', [MovieController::class, 'homepage']);
-=======
-// Route::get('/movie', function () {
-//     return view('movie');
-// });
->>>>>>> 158de8d099be481d70fa82acd6f91591a168da3a
-
 // Route::get('/movies', [MovieController::class, 'index']);
-
 
 // Route::get('/movie',[MovieController::class,'create']);
 // Route::resource('movie', MovieController::class);
@@ -33,12 +25,7 @@ Route::get('/home', [MovieController::class, 'homepage']);
 //     return view('layouts.home');
 
 Route::resource('movie', MovieController::class);
-
 Route::resource('categories', CategoryController::class);
 
-<<<<<<< HEAD
-
-=======
+// Pilih posisi Route /home sesuai keinginan, aku letakkan di bawah:
 Route::get('/home', [MovieController::class, 'homepage']);
->>>>>>> 158de8d099be481d70fa82acd6f91591a168da3a
-
