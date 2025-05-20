@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         // Movie::factory(50)->create();
 
         Movie::factory(10)->create();
+        //$this->call(CategorySeeder::class);
 
         // User::factory()->create([
         //     'name' => 'Test User',

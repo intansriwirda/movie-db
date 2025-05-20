@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Category extends Model
 {
     //
+     protected $fillable = [
+        'category_name',
+        'description', // tambahkan semua field yang diinput dari form
+    ];
 }
