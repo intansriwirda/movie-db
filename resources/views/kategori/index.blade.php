@@ -4,7 +4,11 @@
 @section('navKategori', 'active')
 
 @section('content')
+<<<<<<< HEAD
     <h1 class="mb-4">Daftar Movie</h1>
+=======
+    <h1 class="mb-4">Daftar Kategori</h1>
+>>>>>>> 158de8d099be481d70fa82acd6f91591a168da3a
 
     <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">
         <i class="bi bi-plus-circle"></i> Input Data Kategori

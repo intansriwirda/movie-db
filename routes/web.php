@@ -9,11 +9,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 Route::get('/movie', function () {
     return view('movie');
 });
 
 Route::get('/home', [MovieController::class, 'homepage']);
+=======
+// Route::get('/movie', function () {
+//     return view('movie');
+// });
+>>>>>>> 158de8d099be481d70fa82acd6f91591a168da3a
 
 // Route::get('/movies', [MovieController::class, 'index']);
 
@@ -30,5 +36,9 @@ Route::resource('movie', MovieController::class);
 
 Route::resource('categories', CategoryController::class);
 
+<<<<<<< HEAD
 
+=======
+Route::get('/home', [MovieController::class, 'homepage']);
+>>>>>>> 158de8d099be481d70fa82acd6f91591a168da3a
 
