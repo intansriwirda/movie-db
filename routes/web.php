@@ -6,8 +6,9 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
-    
+
     return view('welcome');
+    
 });
 
 // Route::get('/movie', function () {
