@@ -13,6 +13,17 @@ class Movie extends Model
     /** @use HasFactory<\Database\Factories\MovieFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'slug',
+        'synopsis',
+        'year',
+        'actors',
+        'category_id',
+        'cover_image'
+    ];
+
+
 
     public function category() : BelongsTo
     {

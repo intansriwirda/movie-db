@@ -14,6 +14,9 @@
               <li class="nav-item">
                 <a class="nav-link @yield('navMovie') " aria-current="page" href="{{url('/movie')}}">Movie</a>
               </li>
+               <li class="nav-item">
+                <a class="nav-link @yield('navMovie') " aria-current="page" href="{{route('movie.create')}}">Input Movie</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link @yield('navKategori') " aria-current="page" href="{{url('/categories')}}">Kategori</a>
               </li>

@@ -90,6 +90,20 @@
         @error('actors') <div class="invalid-feedback">{{ $message }}</div> @enderror
     </div>
 
+    <div class="mb-3">
+                <label for="cover_image" class="form-label">Cover Image</label>
+                @if ($movie->cover_image)
+                    <div class="mb-2">
+                        <img src="{{ asset('storage/' . $movie->cover_image) }}" alt="Cover Image" width="150">
+                    </div>
+                @endif
+                <input type="file" class="form-control @error('cover_image') is-invalid @enderror" id="cover_image"
+                    name="cover_image" accept="image/*">
+                @error('cover_image')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
     <button type="submit" class="btn btn-success">Update</button>
     <a href="{{ route('movie.index') }}" class="btn btn-secondary">Batal</a>
 </form>

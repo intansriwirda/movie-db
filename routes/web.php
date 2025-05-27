@@ -4,11 +4,12 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\CategoryController;
+use App\Models\Movie;
 
 Route::get('/', function () {
 
     return view('welcome');
-    
+
 });
 
 // Route::get('/movie', function () {
@@ -19,7 +20,7 @@ Route::get('/', function () {
 
 
 // Route::get('/movie',[MovieController::class,'create']);
-// Route::resource('movie', MovieController::class);
+Route::resource('movie', MovieController::class);
 
 // Route::resource('/kategori', CategoryController::class);
 
