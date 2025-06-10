@@ -50,20 +50,24 @@
                         <td>{{ $movie->title }}</td>
                         <td>{{ $movie->year }}</td>
                         <td>{{ $movie->actors }}</td>
-                        <td>{{ $movie->category->category_name ?? 'Tidak ada kategori' }}</td> <!-- Tampilkan nama kategori -->
+                        <td>{{ $movie->category->category_name ?? 'Tidak ada kategori' }}</td>
+                        <!-- Tampilkan nama kategori -->
                         <td>{{ Str::limit($movie->synopsis, 60) }}</td>
                         <td>
-                            <a href="{{ route('movie.edit', $movie->id) }}" class="btn btn-warning btn-sm me-1" title="Edit">
+                            <a href="{{ route('movie.edit', $movie->id) }}" class="btn btn-warning btn-sm me-1"
+                                title="Edit">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
-
-                            <form action="{{ route('movie.destroy', $movie->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger btn-sm" title="Hapus">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </form>
+                            @can('delete')
+                                <form action="{{ route('movie.destroy', $movie->id) }}" method="POST" class="d-inline"
+                                    onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger btn-sm" title="Hapus">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

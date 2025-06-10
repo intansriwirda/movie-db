@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -35,9 +36,9 @@ class MovieController extends Controller
         return view('movie.create', compact('categories'));
     }
 
-   public function store(Request $request)
+    public function store(Request $request)
     {
-         $slug = Str::slug($request->title);
+        $slug = Str::slug($request->title);
 
         // Tambahkan slug ke dalam request
         $request->merge(['slug' => $slug]);
@@ -113,11 +114,17 @@ class MovieController extends Controller
 
     public function destroy(Movie $movie): RedirectResponse
     {
+        // Cek otorisasi terlebih dahulu
+        if (!Gate::allows('delete', $movie)) {
+            abort(403);
+        }
+
         // Hapus file cover image dari storage jika ada
         if ($movie->cover_image && Storage::disk('public')->exists($movie->cover_image)) {
             Storage::disk('public')->delete($movie->cover_image);
         }
 
+        // Hapus data movie dari database
         $movie->delete();
 
         return redirect('/movie')->with('success', 'Data Movie berhasil dihapus!');
