@@ -2,24 +2,32 @@
 
 namespace Database\Seeders;
 
-use CategorySeeder;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Movie;
-use App\Models\Category;
-use function Pest\Laravel\call;
-
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
      */
-        public function run(): void
+    public function run(): void
     {
-        // Masukkan data kategori dulu agar MovieFactory bisa mengambil category_id
+        // Buat 10 user dummy
+        User::factory(10)->create();
+
+        // Buat 1 admin manual
+        User::create([
+            'name' => 'Admin Dummy',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('password123'),
+            'role' => 'admin', // pastikan kolom ini ada di tabel users
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Masukkan kategori
         DB::table('categories')->insert([
             [
                 'category_name' => 'Action',
@@ -52,8 +60,5 @@ class DatabaseSeeder extends Seeder
                 'updated_at'    => now(),
             ],
         ]);
-
-        // Setelah itu baru buat movie
-        Movie::factory(10)->create();
     }
 }

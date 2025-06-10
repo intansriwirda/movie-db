@@ -1,9 +1,5 @@
-<footer class="bg-dark mt-auto py-3 text-white">
-    <div class="container">
-        Padang, &copy {{date("Y-d-M")}} Intan Sriwirda Jaya
-
-<footer class="bg-dark mt-auto text-center py-3 text-white">
-    <div class="container">
-        Padang, &copy {{date("Y-d-M")}} intan sriwirda jaya
+<footer class="mt-auto py-3 text-white" style="background-color: #07b857;">
+    <div class="container text-center">
+        Padang, &copy; {{ date("Y-d-M") }} Intan Sriwirda Jaya
     </div>
-  </footer>
+</footer>

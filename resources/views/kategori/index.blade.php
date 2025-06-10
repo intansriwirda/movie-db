@@ -5,7 +5,6 @@
 
 @section('content')
 
-    <h1 class="mb-4">Daftar Movie</h1>
 
     <h1 class="mb-4">Daftar Kategori</h1>
 
@@ -52,11 +51,13 @@
                         <td>{{ $category->category_name }}</td>
                         <td>{{ $category->description }}</td>
                         <td>
-                            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning btn-sm me-1" title="Edit">
+                            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning btn-sm me-1"
+                                title="Edit">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
 
-                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="d-inline"
+                                onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger btn-sm" title="Hapus">

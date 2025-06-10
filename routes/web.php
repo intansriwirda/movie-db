@@ -1,36 +1,31 @@
 <?php
 
-use App\Models\Category;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MovieController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
-use App\Models\Movie;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Route;
 
+// Halaman default
 Route::get('/', function () {
-
     return view('welcome');
-
 });
 
-// Route::get('/movie', function () {
-//     return view('movie');
-// });
-
-// Route::get('/movies', [MovieController::class, 'index']);
 
 
-// Route::get('/movie',[MovieController::class,'create']);
+// Resource controller
 Route::resource('movie', MovieController::class);
-
-// Route::resource('/kategori', CategoryController::class);
-
-// Route::get('/home', function () {
-//     return view('layouts.home');
-
-// Route::resource('movie', MovieController::class);
-
 Route::resource('categories', CategoryController::class);
+Route::get('home',[moviecontroller::class,'homepage'])->name('home');
+Route::get('movie/{id}/{slug}', [MovieController::class, 'detail'])->name('movie.detail');
 
-Route::get('/home', [MovieController::class, 'homepage']);
 
-Route::get('detailmovie/{id}/{slug}', [MovieController::class, 'detail']);
+Route::get('create-movie', [MovieController::class, 'createMovie'])->name('createMovies')->middleware('auth');
+
+
+// Route menampilkan form login (GET)
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
+
+// Route untuk proses login (POST)
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
